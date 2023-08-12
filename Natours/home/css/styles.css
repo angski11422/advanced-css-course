@@ -201,6 +201,8 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1); }
   .feature-box__text {
     font-size: inherit; }
 

@@ -16,6 +16,10 @@
         color: transparent;
     }
 
+    &:hover {
+        transform: translateY(-1);
+    }
+
     &__text {
         font-size: inherit;
     }
