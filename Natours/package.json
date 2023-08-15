@@ -4,11 +4,23 @@
   "description": "landing page for natours",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass home/scss/main.scss home/css/styles.css -w"
+    "watch:sass": "node-sass home/scss/main.scss home/css/styles.css -w",
+    "devserver": "liver-server",
+    "start": "npm-run-all --parallel watch:sass devserver",
+    
+    "compile:sass": "node-sass home/scss/main.scss home/css/styles.comp.css",
+    "concat:css": "concat -o home/css/styles.concat.css home/css/icon-font.css home/css/styles.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 5 versions' home/css/styles.concat.css -o home/css/styles.prefix.css",
+    "compress:css": "node-sass home/css/styles.prefix.css home/css/styles.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css"
   },
   "author": "angela",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^8.0.0"
+    "autoprefixer": "^10.4.15",
+    "concat": "^1.0.3",
+    "node-sass": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.1.0"
   }
 }
